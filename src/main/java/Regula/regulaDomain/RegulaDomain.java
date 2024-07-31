@@ -1,11 +1,14 @@
 package Regula.regulaDomain;
 
+import Regula.regulaDomain.commands.regbuild;
+import Regula.regulaDomain.commands.verdbuild;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.event.Listener;
 
 import java.io.File;
 import java.io.IOException;
@@ -13,7 +16,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.logging.Logger;
 
-public final class RegulaDomain extends JavaPlugin {
+public final class RegulaDomain extends JavaPlugin implements Listener{
 
     private JavaPlugin plugin;
     private FileConfiguration regConfig, logConfig, buildingConfig;
@@ -22,9 +25,9 @@ public final class RegulaDomain extends JavaPlugin {
     @Override
     public void onEnable() {
         this.getCommand("verdbuild").setTabCompleter(this);
-        getServer().getPluginManager().registerEvents(this, this);
-        getCommand("regbuild").setExecutor(new regbuild(this));
-        getCommand("verdbuild").setExecutor(new verdbuild(this));
+         getServer().getPluginManager().registerEvents(this, this);
+         getCommand("regbuild").setExecutor(new regbuild(this));
+         getCommand("verdbuild").setExecutor(new verdbuild(this));
         regFile = new File(getDataFolder(), "buildRequests.yml");
         if (!regFile.exists()) {
             regFile.getParentFile().mkdirs();
