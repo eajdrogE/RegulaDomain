@@ -19,8 +19,8 @@ import java.util.logging.Logger;
 public final class RegulaDomain extends JavaPlugin implements Listener{
 
     private JavaPlugin plugin;
-    private FileConfiguration regConfig, logConfig, buildingConfig;
-    private File regFile, logFile,buildingFile;
+    private FileConfiguration regConfig, logConfig, buildingConfig, nationConfig;
+    private File regFile, logFile,buildingFile, nationFile;
     public static final Logger LOGGER = Logger.getLogger("verdbuilding");
     @Override
     public void onEnable() {
@@ -66,7 +66,7 @@ public final class RegulaDomain extends JavaPlugin implements Listener{
         if (!buildingFile.exists()) {
             buildingFile.getParentFile().mkdirs();
             try {
-                regFile.createNewFile();
+                buildingFile.createNewFile();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
@@ -78,8 +78,24 @@ public final class RegulaDomain extends JavaPlugin implements Listener{
         } catch (IOException | InvalidConfigurationException e) {
             LOGGER.warning(e.getMessage());
         }
+        
+    nationFile = new File(getDataFolder(), "nations.yml");
+        if (!nationFile.exists()) {
+        nationFile.getParentFile().mkdirs();
+        try {
+            nationFile.createNewFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        saveResource("nations.yml", false);
     }
-
+    nationConfig = new YamlConfiguration();
+        try {
+        nationConfig.load(nationFile);
+    } catch (IOException | InvalidConfigurationException e) {
+        LOGGER.warning(e.getMessage());
+    }
+}
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
