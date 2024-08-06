@@ -13,32 +13,37 @@ public class Nation {
     public Nation(String[] args) {
         // Создаем данные для нации
         Map<String, Object> nationData = new LinkedHashMap<>();
-        nationData.put("доход", 0);
-        nationData.put("лимит", 100);
-        nationData.put("лимит_наступательной_войны", 50);
-        nationData.put("лимит_оборонительной_войны", 40);
-        nationData.put("стабильность", 0.75);
-        nationData.put("благосостояние", 0.6);
-        nationData.put("эффективность", 0.5);
-        nationData.put("престиж", 500);
-        nationData.put("лояльность_знати", 8);
-        nationData.put("лояльность_духовенства", 7);
-        nationData.put("лояльность_простолюдин", 6);
-        nationData.put("бесчестие", 15);
-        nationData.put("очки_пополнения", 120);
-        nationData.put("статус", "графство");
-        nationData.put("преобладающее_божество", "Аполлон");
-        nationData.put("преобладающая_раса", "эльфы");
-        nationData.put("имя_правителя", "Граф Иван");
-        nationData.put("возраст_правителя", 35);
-        nationData.put("раса_правителя", "человеки");
-        nationData.put("прирост_престижа", 0);
-        nationData.put("прирост_бесчестия", -1);
-        nationData.put("линейный_бонус_к_доходу", 0);
-        nationData.put("процентный_бонус_к_доходу", "0%"); // Отображение в процентах
-        nationData.put("процентный_бонус_к_лимиту", "0%"); // Отображение в процентах
-        nationData.put("процентный_бонус_к_лимиту_при_обороне", "0%"); // Отображение в процентах
-        nationData.put("процентный_бонус_к_лимиту_при_наступлении", "0%"); // Отображение в процентах
+        String nationTitle = "";
+        if (args.length == 0) {
+            nationTitle = "Гоблинвиль";
+        }
+        else {nationTitle = args[0];}
+        nationData.put("Доход: ", 0);
+        nationData.put("Лимит армии:", 0);
+        nationData.put("Лимит наступательной войны: ", 50);
+        nationData.put("Лимит оборонительной войны: ", 40);
+        nationData.put("Стабильность: ", 0);
+        nationData.put("Благосостояние: ", 0);
+        nationData.put("Эффективность: ", 0.5);
+        nationData.put("Престиж: ", 100);
+        nationData.put("Лояльность знати: ", 5);
+        nationData.put("Лояльность духовенства: ", 5);
+        nationData.put("Лояльность простолюдин: ", 5);
+        nationData.put("Бесчестие: ", 0);
+        nationData.put("Очки пополнения: ", 0);
+        nationData.put("Статус: ", "графство");
+        nationData.put("Преобладающее божество: ", "Аполлон");
+        nationData.put("Преобладающая раса: ", "эльфы");
+        nationData.put("Имя правителя: ", "Граф Иван");
+        nationData.put("Возраст правителя: ", 35);
+        nationData.put("Раса правителя: ", "человеки");
+        nationData.put("Прирост престижа: ", 0);
+        nationData.put("Прирост бесчестия: ", -1);
+        nationData.put("Линейный бонус к доходу: ", 0);
+        nationData.put("Процентный бонус к доходу: ", 0); // Отображение в процентах
+        nationData.put("Процентный бонус к лимиту: ", 0); // Отображение в процентах
+        nationData.put("Процентный бонус к лимиту при обороне: ", 0); // Отображение в процентах
+        nationData.put("Процентный бонус к лимиту при наступлении: ", 0); // Отображение в процентах
         // Создаем YML-файл
         try (FileWriter writer = new FileWriter("nations.yml")) {
             DumperOptions options = new DumperOptions();
