@@ -78,7 +78,7 @@ public final class RegulaDomain extends JavaPlugin implements Listener{
         } catch (IOException | InvalidConfigurationException e) {
             LOGGER.warning(e.getMessage());
         }
-        
+
     nationFile = new File(getDataFolder(), "nations.yml");
         if (!nationFile.exists()) {
         nationFile.getParentFile().mkdirs();
