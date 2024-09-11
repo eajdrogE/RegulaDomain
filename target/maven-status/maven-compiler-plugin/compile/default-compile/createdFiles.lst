@@ -2,4 +2,5 @@ Regula\regulaDomain\commands\verdbuild.class
 Regula\regulaDomain\commands\regbuild.class
 Regula\regulaDomain\InventoryCreators.class
 Regula\regulaDomain\InventoryCreators$InventoryClickListener.class
+Regula\regulaDomain\Nation.class
 Regula\regulaDomain\RegulaDomain.class
